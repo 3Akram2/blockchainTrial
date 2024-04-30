@@ -5,7 +5,11 @@ export const storeTodo = async (data: ToDo): Promise<void> => {
         const client = getClient();
         const account = getAccount();
         const suggestedParams = await client.getTransactionParams().do();
-        const note = algosdk.encodeObj(data);
+        const note = algosdk.encodeObj({
+            title: data.title,
+            day: data.day,
+            reminder: data.reminder ? data.reminder : 500, // Convert boolean to string
+        });
 
         const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
             from: account.addr,
@@ -18,6 +22,6 @@ const signedTxn = txn.signTxn(account.sk);
 const sendTxn = await client.sendRawTransaction(signedTxn).do();
 console.log("Transaction ID:", sendTxn.txId);
 } catch (error) {
-    console.error("Failed to store weather data:", error);
+    console.error("Failed to store todo data:", error);
 }
 };

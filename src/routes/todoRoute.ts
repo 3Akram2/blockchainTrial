@@ -5,6 +5,9 @@ const router = express.Router();
 
 
 router.post("/", storeTodo);
+router.get("/", () => {;
+    console.log("done")
+});
 
 
 export default router;

@@ -18,9 +18,12 @@ export const storeTodo = async (req: Request, res: Response) => {
     return;
   }
   try {
-    const { todo  } = req.body;
-    storeTododataService(todo);
-    res.status(200).json(todo);
+    console.log(req.body)
+    const { body: todo } = req;
+    console.log(todo)
+
+    const storedTodo = storeTododataService(todo);
+    res.status(200).json(storedTodo);
   } catch (error) {
     // If there is an error, we will log it and send a 500 status code
     res.status(500).send("Error in storing todo data");

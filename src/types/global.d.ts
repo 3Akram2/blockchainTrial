@@ -1,7 +1,5 @@
-interface WeatherData {
-  city:string;
-  temperature: number;
-  humidity: number;
-  wind: number;
-  rain: number;
+interface ToDo {
+    title: string;
+    day: string;
+    reminder: boolean;
 }

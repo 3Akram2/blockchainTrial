@@ -1,5 +1,7 @@
 import express from "express";
-import weatherRoute from "./routes/weatherRoute.js";
+import studentRoute from "./routes/studentRoute.js";
+import cors from "cors";
+import bodyParser from 'body-parser';
 
 // We will create an express app
 const app = express();
@@ -7,10 +9,21 @@ const app = express();
 // The port that the express server will listen on
 const PORT = 3000;
 
+const corsOptions ={
+  origin:'http://localhost:3000', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+
+
 app.use(express.json());
 
-// We define our first route
-app.use("/api/weather", weatherRoute);
+
+app.use("/student", studentRoute);
 
 // Start the express server
 app.listen(PORT, () => {

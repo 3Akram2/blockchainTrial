@@ -1,7 +1,7 @@
-interface WeatherData {
-  city:string;
-  temperature: number;
-  humidity: number;
-  wind: number;
-  rain: number;
+interface StudentData {
+ id:String;
+ name:String;
+ dateOfBirth:String;
+ courseName:String;
+ enrolled:Boolean; 
 }

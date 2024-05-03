@@ -17,7 +17,7 @@ export const storeStudentData = async (req: Request, res: Response) => {
   }
 
   try {
-    // Get the city param from the request
+    // Get the student data from the request body
     const { body: student } = req;
     console.log(student);
     // here we are storting the student data

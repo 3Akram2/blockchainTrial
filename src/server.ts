@@ -7,7 +7,7 @@ import bodyParser from 'body-parser';
 const app = express();
 
 // The port that the express server will listen on
-const PORT = 3000;
+const PORT = 3001;
 
 const corsOptions ={
   origin:'http://localhost:3000', 

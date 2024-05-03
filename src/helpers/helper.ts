@@ -11,7 +11,14 @@ const account = getAccount();
 
 const suggestedParams = await client.getTransactionParams().do();
 
-const note = algosdk.encodeObj(data);
+const note = algosdk.encodeObj({
+    id:data.id,
+    name :data.name,
+    dateOfBirth:data.dateOfBirth,
+    courseName:data.courseName,
+    enrolled:data.enrolled?true:-1
+
+});
 
 const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
 from: account.addr,
@@ -28,7 +35,7 @@ console.log("Transaction ID:", sendTxn.txId);
 
 } catch (error) {
 
-console.error("Failed to store weather data:", error);
+console.error("Failed to store student data:", error);
 
 }
 };
